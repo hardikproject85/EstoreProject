@@ -1,0 +1,58 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block header %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    </head>
+
+    <body>
+           
+        
+        <!-- Recent Product Start -->
+        <div class="recent-product product">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <h1>My Product</h1>
+                </div>
+                
+                <div class="row align-items-center product-slider product-slider-4">
+                    {% for i in products %}
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">{{i.product_category}}</a>
+                              
+                            </div>
+                            <div class="product-image">
+                                <a href="product_detail.html">
+                                    <img src="{{i.product_image.url}}" alt="Product Image" height="300px;" width="300px;">
+                                </a>
+                                <div class="product-action">
+                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                    <a href="#"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>Rs.</span>{{i.product_price}}</h3>
+                               
+                            </div>&nbsp;&nbsp;&nbsp;
+                            <a class="btn" href="{% url 'seller_edit_product' pk=i.pk %}"><i class=""></i>Edit</a>&nbsp;&nbsp;&nbsp;
+                            <a class="btn" href="{% url 'seller_product_detail' pk=i.pk %}"><i class=""></i>Details</a>&nbsp;&nbsp;&nbsp;
+                            <a class="btn" href="{% url 'seller_delete_product' pk=i.pk %}"><i class=""></i>Delete</a>
+                        </div>
+                    </div>
+
+                  {% endfor %}
+                
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Recent Product End -->
+    </body>
+</html>
+
+{% endblock %}
